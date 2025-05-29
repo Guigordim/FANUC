@@ -3,10 +3,20 @@ import openai
 import time
 import os
 from deep_translator import GoogleTranslator
+import streamlit as st
+from dotenv import load_dotenv, find_dotenv
+from groq import Groq
+from deep_translator import GoogleTranslator
+
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv(find_dotenv())
+
+# Inicializar cliente Groq
+client = Groq()
 
 # Configuração inicial
 st.title("📖 Tutor Virtual para FANUC")
-client = openai.Client()
+#client = openai.Client()
 
 # Inicialização de estados da sessão
 if "vector_store" not in st.session_state:
