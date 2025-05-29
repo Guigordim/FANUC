@@ -5,3 +5,5 @@ yfinance
 pandas
 matplotlib
 colorama
+googletrans
+deep-translator
