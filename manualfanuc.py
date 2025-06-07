@@ -21,7 +21,7 @@ except Exception as e:
 
 
 # Configuração inicial da interface
-st.title("🤖 Tutor Virtual para FANUC")
+st.title("🤖 Tutor Virtual para FANUC e CNC Siemens")
 
 # Inicialização de estados da sessão
 # Mantemos assistant e vector_store na sessão para reutilizar após a configuração inicial
@@ -103,7 +103,7 @@ def configurar_sistema():
                 # st.info("Criando Assistente...") # Removido
                 assistant = client.beta.assistants.create(
                     name="Especialista FANUC AppSession", # Nome para identificar
-                    instructions="Você é um especialista técnico em robótica industrial com amplo conhecimento nos manuais FANUC. Responda às perguntas de forma clara e técnica, citando sempre as páginas relevantes do manual e traduzindo qualquer conteúdo necessário para português.",
+                    instructions="Você é um especialista técnico em robótica industrial com amplo conhecimento nos manuais FANUC, e nos manuais do Cnc da siemens. Responda às perguntas de forma clara e técnica, citando sempre as páginas relevantes do manual e traduzindo qualquer conteúdo necessário para português.",
                     tools=[{"type": "file_search"}],
                     tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
                     model="gpt-4o-mini"
@@ -130,7 +130,7 @@ configurar_sistema()
 #         st.markdown(message["content"])
 
 # Interface de perguntas
-user_question = st.text_input("📝 Faça sua pergunta sobre os manuais FANUC:")
+user_question = st.text_input("📝 Faça sua pergunta sobre os manuais FANUC e CNC:")
 
 # Processamento da pergunta
 if user_question and st.session_state.assistant: # Verifica se o assistente foi configurado
